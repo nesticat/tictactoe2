@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>틱택토 게임</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>틱택토 게임</h1>
+    
+    <!-- 메뉴 화면 -->
+    <div id="menuScreen" class="screen active">
+      <div class="menu-content">
+        <h2>게임 모드 선택</h2>
+        <button class="btn btn-large" onclick="showMultiplayerMenu()">멀티플레이</button>
+        <button class="btn btn-large" onclick="showAIMenu()">AI와 플레이</button>
+      </div>
+    </div>
+
+    <!-- 멀티플레이 선택 화면 -->
+    <div id="multiplayerScreen" class="screen">
+      <div class="menu-content">
+        <h2>심볼 선택</h2>
+        <p class="info">어떤 심볼로 플레이하시겠습니까?</p>
+        <button class="btn btn-large" onclick="joinMultiplayer('O')">O 선택</button>
+        <button class="btn btn-large" onclick="joinMultiplayer('X')">X 선택</button>
+        <button class="btn" onclick="backToMenu()">돌아가기</button>
+      </div>
+    </div>
+
+    <!-- AI 선택 화면 -->
+    <div id="aiScreen" class="screen">
+      <div class="menu-content">
+        <h2>심볼 선택</h2>
+        <p class="info">어떤 심볼로 플레이하시겠습니까?</p>
+        <button class="btn btn-large" onclick="joinAI('O')">O 선택</button>
+        <button class="btn btn-large" onclick="joinAI('X')">X 선택</button>
+        <button class="btn" onclick="backToMenu()">돌아가기</button>
+      </div>
+    </div>
+
+    <!-- 대기 화면 -->
+    <div id="waitingScreen" class="screen">
+      <div class="menu-content">
+        <h2>게임 대기 중</h2>
+        <p class="info">다른 플레이어의 입장을 기다리는 중입니다...</p>
+        <div class="spinner"></div>
+        <p id="waitingInfo" class="waiting-info">게임 ID: <span id="gameIdDisplay">로딩 중...</span></p>
+        <button class="btn" onclick="backToMenu()">취소</button>
+      </div>
+    </div>
+
+    <!-- 게임 화면 -->
+    <div id="gameScreen" class="screen">
+      <div class="game-header">
+        <div class="game-info">
+          <p><strong>게임 ID:</strong> <span id="currentGameId">-</span></p>
+          <p id="modeInfo" class="mode-info"></p>
+        </div>
+        <div class="status-container">
+          <p id="gameStatus" class="status">준비 중...</p>
+          <p id="turnInfo" class="turn-info">차례: <span id="currentTurn">-</span></p>
+        </div>
+      </div>
+
+      <div class="game-container">
+        <div class="board" id="board">
+          <div class="cell" onclick="makeMove(0)"></div>
+          <div class="cell" onclick="makeMove(1)"></div>
+          <div class="cell" onclick="makeMove(2)"></div>
+          <div class="cell" onclick="makeMove(3)"></div>
+          <div class="cell" onclick="makeMove(4)"></div>
+          <div class="cell" onclick="makeMove(5)"></div>
+          <div class="cell" onclick="makeMove(6)"></div>
+          <div class="cell" onclick="makeMove(7)"></div>
+          <div class="cell" onclick="makeMove(8)"></div>
+        </div>
+      </div>
+
+      <div class="player-info">
+        <p id="playerSymbols"></p>
+      </div>
+
+      <div id="resultContainer" class="result-container" style="display: none;">
+        <div class="result-box">
+          <h2 id="resultMessage">게임 종료</h2>
+          <button class="btn" id="rematchBtn" onclick="rematch()">다시 플레이</button>
+          <button class="btn" onclick="backToMenu()">메뉴로 돌아가기</button>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button class="btn" onclick="backToMenu()">메뉴로 돌아가기</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

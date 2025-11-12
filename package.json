@@ -1,0 +1,23 @@
+{
+  "name": "tictactoe-game",
+  "version": "1.0.0",
+  "description": "Tic Tac Toe game with multiplayer and AI modes",
+  "main": "server/index.js",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "keywords": ["tictactoe", "game", "websocket"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
